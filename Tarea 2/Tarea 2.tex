@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+    \usepackage{tikz}
+    \usetikzlibrary{cd}
+    \usepackage{notetaking}
+\title{Tarea 2}
+\author{Nicholas Mc-Donnell}
+\date{05/2018}
+
+\begin{document}
+    \maketitle
+    \begin{enumerate}[label=(\arabic*)]
+        \item Sea $K=\set{Q}(\sqrt{2},\sqrt{5})$
+        \begin{enumerate}[label=(\alph*)]
+            \item Muestre que $K/\set{Q}$ es Galois y calcule $Gal(K/\set{Q})$
+
+            \item Encuentre un elemento $\alpha\in K$ tal que $K=\set{Q}(a)$
+            
+            \item Determine todas las extensiones intermedias $\set{Q}\subset E\subset K$
+        \end{enumerate}
+        \begin{proof}
+            \
+            \begin{enumerate}[label=(\alph*)]
+                \item Sabemos que los automorfismos de $K$ son la combinación de los definidos de la siguiente manera:
+                \[\varphi(\sqrt{5})=-\sqrt{5}\]
+                \[\sigma(\sqrt{2})=-\sqrt{2}\]
+                Nos tomamos el grupo generado $<\varphi,\sigma>$, el cual es $Gal(K/\set{Q})$, sabemos que $\varphi^2=\sigma^2=Id$, recordamos que $\set{Z}_2\times\set{Z}_2$ esta definido como el grupo que cumple eso, por lo que $\set{Z}_2\times\set{Z}_2\simeq Gal(K/\set{Q})$, lo que implica que $|Gal(K/\set{Q})|=4$. Con la ayuda de la ``ley de torres'', vemos lo siguiente: 
+
+                \[
+                    \begin{tikzcd}
+                        & \set{Q}(\sqrt{2},\sqrt{5}) \arrow[no head]{dr}{2} \arrow[no head, swap]{dd}{4} \arrow[no head, swap]{dl}{2} &\\
+                        \set{Q}(\sqrt{2}) \arrow[no head]{dr}{2} & & \set{Q}(\sqrt{5}) \arrow[no head, swap]{dl}{2}\\
+                        & \set{Q} &
+                    \end{tikzcd}
+                \]
+
+                Esto es ya que mismo polinomio minimal de $\set{Q}(\sqrt{2})$\footnote{$x^2-2$} sobre $\set{Q}$ es minimal de $\set{Q}(\sqrt{5})(\sqrt{2})$ sobre $\set{Q}(\sqrt{5})$. Luego $[\set{Q}(\sqrt{2},\sqrt{5}):\set{Q}]=4=|Gal(K/\set{Q})|$, por lo que $K/\set{Q}$ es Galois
+    
+                \item Nos tomamos la siguiente extensión $\set{Q}(\sqrt{2}+\sqrt{5})\subseteq\set{Q}(\sqrt{5},\sqrt{2})$, luego si $[\set{Q}(\sqrt{2}+\sqrt{5}):\set{Q}]=4$, entonces $\set{Q}(\sqrt{2}+\sqrt{5})=\set{Q}(\sqrt{5},\sqrt{2})$. Para esto 
+                
+                \item 
+            \end{enumerate}
+        \end{proof}
+
+        \item \textit{Extensiones Simples.}
+        \begin{enumerate}[label=(\alph*)]
+            \item Demuestre que toda extensión algebraica simple admite a los más un número finito de cuerpos intermedios
+
+            \item Sea $p$ un número primo y sea $K=\set{F}_p(X,Y)$. Consideramos los polinomios
+            \[f_1(T)=T^p-X,\quad f_2(T)=T^p-Y\quad\in K[T]\]
+            Fijamos la cerradura algebraica $\overline{K}$ y denotamos $X^{1/p},Y^{1/p}$ a las raíces de $f_1,f_2$, respectivamente. Sea $L=K(X^{1/p},Y^{1/p})$. Demuestre que $L/K$ es una extensión finita y que hay una infinidad de cuerpos $E$ tales que $K\subset E\subset L$. ¿Es $L/K$ una extensión simple?
+        \end{enumerate}
+
+        \item Sean $K$ un cuerpo de característica $p>0$ y $f(x)\in K[x]$ un polinomio irreductible y no separable.
+        \begin{enumerate}[label=(\alph*)]
+            \item Demuestre que existe un polinomio $\varphi(x)\in K[x]$ tal que $f(x)=\varphi(x^p)$
+
+            \item Sea $e\geq 1$ el mayor entero tal que existe un polinomio $g(x)\in K[x]$ con $f(x)=g(x^{p^e})$ (en particular para todo polinomio $h(x)\in K[x]$, se tiene que $h(x^{p^{e+1}})\neq f(x)$) Demuestre que $g(x)$ es irreductible y separable
+
+            \item Fijemos la cerradura algebraica $\overline{K}$ de $K$. Muestre que cada raíz de $f(x)$ en $\overline{K}$ tiene multiplicidad $p^e$
+
+            \item Sea $\alpha\in\overline{K}$ una raíz de $f(x)$ y formemos $F=K(\alpha)$. Considere
+            \[I(F/K):=\{\func{\sigma}{F}{\overline{K}}{}{},\text{ incrustación }:\sigma(a)=a,\forall a\in K\}\]
+            Muestre que $|I(F/K)|<[F:K]$. Más precisamente, demuestre que $|I(F/K)|=\deg g$
+        \end{enumerate}
+    \end{enumerate}
+\end{document}
