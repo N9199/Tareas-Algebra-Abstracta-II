@@ -35,9 +35,19 @@
 
                 Esto es ya que mismo polinomio minimal de $\set{Q}(\sqrt{2})$\footnote{$x^2-2$} sobre $\set{Q}$ es minimal de $\set{Q}(\sqrt{5})(\sqrt{2})$ sobre $\set{Q}(\sqrt{5})$. Luego $[\set{Q}(\sqrt{2},\sqrt{5}):\set{Q}]=4=|Gal(K/\set{Q})|$, por lo que $K/\set{Q}$ es Galois
     
-                \item Nos tomamos la siguiente extensión $\set{Q}(\sqrt{2}+\sqrt{5})\subseteq\set{Q}(\sqrt{5},\sqrt{2})$, luego si $[\set{Q}(\sqrt{2}+\sqrt{5}):\set{Q}]=4$, entonces $\set{Q}(\sqrt{2}+\sqrt{5})=\set{Q}(\sqrt{5},\sqrt{2})$. Para esto 
-                
-                \item 
+                \item Nos tomamos la siguiente extensión $\set{Q}(\sqrt{2}+\sqrt{5})\subseteq\set{Q}(\sqrt{5},\sqrt{2})$, luego si $[\set{Q}(\sqrt{2}+\sqrt{5}):\set{Q}]=4$, entonces $\set{Q}(\sqrt{2}+\sqrt{5})=\set{Q}(\sqrt{5},\sqrt{2})$. Para esto veremos el siguiente polinomio
+                \[x^4-14x^2+9\in\set{Q}[x]\]
+                El cual se puede factorizar de la siguiente manera en $\set{Q}(\sqrt{2},\sqrt{5})[x]$
+                \[(x-\sqrt{2}-\sqrt{5})(x-\sqrt{2}+\sqrt{5})(x+\sqrt{2}-\sqrt{5})(x+\sqrt{2}+\sqrt{5})\]
+                Veamos que no hay forma de multiplicar pares de estos polinomios tal que este sea factorizado en $\set{Q}[x]$
+                \[(x-\sqrt{2}-\sqrt{5})(x+\sqrt{2}+\sqrt{5})=x^2-(\sqrt{2}+\sqrt{5})^2\notin\set{Q}[x]\]
+                \[(x-\sqrt{2}-\sqrt{5})(x-\sqrt{2}+\sqrt{5})=(x-\sqrt{2})^2-5\notin\set{Q}[x]\]
+                \[(x-\sqrt{2}-\sqrt{5})(x+\sqrt{2}-\sqrt{5})=(x-\sqrt{5})^2-2\notin\set{Q}[x]\]
+                Ya que no es factorizable en $\set{Q}[x]$, este es irreductible en $\set{Q}[x]$ y por ende es polinomio minimal de la extensión $\set{Q}(\sqrt{2}+\sqrt{5})/\set{Q}$. Esto implica que $[\set{Q}(\sqrt{2}+\sqrt{5}):\set{Q}]=4$, por lo que $\set{Q}(\sqrt{2}+\sqrt{5})=\set{Q}(\sqrt{5},\sqrt{2})$.
+
+                \item Recordamos que toda extensión intermedia de una extensión Galois, corresponde a un subgrupo del grupo de Galois asociado. Como $Gal(K/\set{Q})\simeq\set{Z}_2\times\set{Z}_2$, hay 5 subgrupos, los cuales son los siguientes:
+                \[\{1\},\{1,f\},\{1,g\},\{1,fg\},\{1,f,g,fg\}\]
+                Vemos que el primer subgrupo corresponde es el subgrupo que fija todo $K$, y que el último solo fija a $\set{Q}$. Por lo que hay 3 extensiones intermedias.
             \end{enumerate}
         \end{proof}
 
@@ -49,6 +59,28 @@
             \[f_1(T)=T^p-X,\quad f_2(T)=T^p-Y\quad\in K[T]\]
             Fijamos la cerradura algebraica $\overline{K}$ y denotamos $X^{1/p},Y^{1/p}$ a las raíces de $f_1,f_2$, respectivamente. Sea $L=K(X^{1/p},Y^{1/p})$. Demuestre que $L/K$ es una extensión finita y que hay una infinidad de cuerpos $E$ tales que $K\subset E\subset L$. ¿Es $L/K$ una extensión simple?
         \end{enumerate}
+        \begin{proof}
+            \
+            \begin{enumerate}[label=(\alph*)]
+                \item Sea $K/L$ una extensión algebraica simple, luego existe un $\alpha\in K$ tal que $L(\alpha)=K$ y existe un polinomio minimal asociado a $\alpha$, el cual se denotara $p$, este es de grado $n$. Sea $E$ un cuerpo intermedio con polinomio minimal $q$ sobre $K$. Se sabe que en $K$ $q(\alpha)=0$, por lo que $q\mid p$. Ahora sea $E_2$ el cuerpo $L$ adjuntando los coeficientes de $q$, trivialmente se nota que $E_2\subseteq E$. Ahora $q$ también es minimal en $E_2$, luego $[E:E_2]=1$, por lo que $E=E_2$. Por esto cada cuerpo intermedio esta relacionado con un polinomio que divide a $p$ en $K$, y hay finitos polinomios que dividen a $p$, por lo que hay finitos cuerpos intermedios.
+
+                \item Primero veamos que $K/L$ es finita, para eso veremos el siguiente diagrama y usaremos la ``ley de torres''
+                \[
+                    \begin{tikzcd}
+                        & K(X^{1/p},Y^{1/p}) \arrow[no head]{dr}{p} \arrow[no head, swap]{dd}{p^2} \arrow[no head, swap]{dl}{p} &\\
+                        K(X^{1/p}) \arrow[no head]{dr}{p} & & K({Y^{1/p}}) \arrow[no head, swap]{dl}{p}\\
+                        & K &
+                    \end{tikzcd}
+                \]
+                Esto es así ya que $f_1,f_2$ son irreductibles por criterio de Eisenstein (tomando $X$ e $Y$, respectivamente) en $K$ y en $K(Y^{1/p}),K(X^{1/p})$ respectivamente, por lo que son minimales en cada caso.
+
+                Para la otra parte, nos tomamos cuerpos de la siguiente forma:
+                \[K(X^{1/p}+cY^{1/p})\quad c\in K\]
+                Notamos que los polinomios minimales de estos cuerpos sobre K, son de a lo más grado $p$, ya que $(X^{1/p}+cY^{1/p})^p=X+c^pY$, pero como $p$ es primo y tienen que dividirlo, o son de grado $1$ o de grado $p$, si son de grado $1$, $K(X^{1/p}+cY^{1/p})=K$, lo cuál claramente es falso. Ahora, tenemos múltiples cuerpos $E$ tal que $K\subset E\subset L$, solo nos falta demostrar que son distintos. Para eso tomamos $c,c'\in K$ distintos tal que $K(X^{1/p}+cY^{1/p})=K(X^{1/p}+c'Y^{1/p})$. Luego
+                \[X^{1/p}=\frac{X^{1/p}+cY^{1/p}-c/c'(X^{1/p}+c'Y^{1/p})}{1-c/c'}\]
+                Por lo que $K(X^{1/p}+cY^{1/p})=L$, pero eso no puede ser ya que estos son cuerpos intermedios, por lo que todos son distintos. Por esto y porque tenemos una infinidad de $c\in K$ para esto, vemos que hay una infinidad de cuerpos intermedios, por ende la extensión no es simple. 
+            \end{enumerate}
+        \end{proof}
 
         \item Sean $K$ un cuerpo de característica $p>0$ y $f(x)\in K[x]$ un polinomio irreductible y no separable.
         \begin{enumerate}[label=(\alph*)]
@@ -62,5 +94,36 @@
             \[I(F/K):=\{\func{\sigma}{F}{\overline{K}}{}{},\text{ incrustación }:\sigma(a)=a,\forall a\in K\}\]
             Muestre que $|I(F/K)|<[F:K]$. Más precisamente, demuestre que $|I(F/K)|=\deg g$
         \end{enumerate}
+        \begin{proof}
+            \
+            \begin{enumerate}[label=(\alph*)]
+                \item Veremos que $f$ tiene que tener una forma especifica, para eso tomaremos dos casos:
+                \[f(x)=\sum^n_{i=0}a_ix^{ip}\]
+                Y el caso donde hay algún termino cuyo exponente no sea un múltiplo de $p$. En el primer caso vemos que la derivada formal de $f$ es $0$, por lo que $(f',f)\neq 1$, y cumple lo pedido. Para el segundo caso, veamos lo siguiente:
+                \[f(x)=\sum^{n}_{i=0}a_ix^i, f'(x)=\sum^{n}_{i=1}a_iix^{i-1}\neq 0\]
+                Y sea $q=(f,f')$, $q$ no es $1$ ya que $f$ no es separable. Luego $q\mid f$, y $q\in K[x]$, pero esto es una contradicción, ya que $f$ es irreductible. Por lo que $f$ es de la forma propuesta, luego sea
+                \[\varphi(x)=\sum^n_{i=0}a_ix^i\]
+                Entonces $\varphi(x^p)=f(x)$.
+
+                \item Notemos que si $g$ no es irreductible, entonces $f$ no es irreductible:
+                \[g(x)=p(x)q(x)\]
+                \[g(x^{p^e})=p(x^{p^e})q(x^{p^e})\]
+                \[f(x)=p(x^{p^e})q(x^{p^e})\]
+                Ahora asumamos que $g$ no es separable,, luego por $(a)$, existe un polinomio $\varphi$ tal que $\varphi(x^p)=g(x)$, pero sabemos que $f(x)=g(x^{p^e})$, por lo que $\varphi(x^{p^{e+1}})=f(x)$, lo que es una contradicción, ya que dijimos que no existe un polinomio que cumple eso. Esto nos dice que $g$ es irreductible y separable.
+
+                \item Sabemos que $g$ es separable en $\overline{K}$:
+                \[\therefore g(x)=\prod^n_{i=0}(x-a_i)\]
+                Con el hecho de que $f(x)=g(x^{p^e})$, podemos ver que
+                \[(g(x))^{p^e}=g(x^{p^e})\]
+                Y si juntamos eso con lo anterior vemos lo siguiente:
+                \[f(x)=(g(x))^{p^e}=\left(\prod^n_{i=0}(x-a_i)\right)^{p^e}=\prod^n_{i=0}(x-a_i)^{p^e}\]
+                Por lo que cada raíz de $f$ tiene multiplicidad $p^e$
+
+                \item Notamos que los $\sigma$ de $I(F/K)$ están dados por el valor de $\sigma(\alpha)$, vemos entonces que $\sigma(f(\alpha))=0$, donde $f$ es de la siguiente forma en $\overline{K}$:
+                \[f(x)=\prod^n_{i=0}(x-a_i)^{p^e}\]
+                Ahora sabemos entonces que puedo mandar $\alpha$ a cualquier raíz de $f$, ya que $f(\sigma(\alpha))=\sigma(f(\alpha))$ vemos que la cantidad de raíces de $f$ es el grado de $g$, por ende $I(F/K)=\deg g$, y como $F/K$ tiene a $f$ como polinomio minimal $[F:K]=\deg f$, lo cuál es estrictamente mayor al grado de $g$, ya que $p^e>1$.
+            \end{enumerate}
+        \end{proof}
+
     \end{enumerate}
 \end{document}
